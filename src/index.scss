@@ -4,6 +4,7 @@
   list-style: none;
   outline: none;
   font-family: 'roboro', -apple-system, sustem-ui, sans-serif;
+  box-sizing: border-box;
 }
 
 
@@ -18,16 +19,17 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 750px;
+  width: 800px;
   height: 540px;
   transform: translate(-50%, -50%);
   box-shadow: 1px 2px 20px #f3f3f3;
   border-radius: 10px;
   border: 1px solid #f4f6f8;
 
+
   &__sidebar {
     background-color: #E5E5E5;
-    width: 200px;
+    width: 230px;
     height: 100%;
     border-right: 1px solid #f1f1f1;
     padding: 60px 20px;

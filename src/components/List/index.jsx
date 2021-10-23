@@ -1,21 +1,24 @@
 import React from "react";
+import classNames from "classnames";
 
 import "./List.scss"
 
 
-const Index =({items}) => {
+const List =({items,isRemovable}) => {
     return (
         <ul className="list">
         {
-            items.map(item => <li className={item.active ? 'active' :''}>
+            items.map((item,index) => (
+                <li key={index} className={classNames(item.className,{'active': item.active})}>
                     <i >
                         {item.icon}
+
                     </i>
                 <span>{item.name}</span>
                 </li>)
-        }
+            )}
         </ul>
     );
 };
 
-export default Index
+export default List
