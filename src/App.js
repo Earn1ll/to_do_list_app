@@ -1,11 +1,12 @@
 import List from "./components/List/index";
 import React from "react";
+import AddList from "./components/AddListButton/AddList";
 
 import listsvg from "./assets/img/Vector.svg";
 import ellipseGreen from "./assets/img/EllipseGreen.svg";
 import ellipseBlue from  "./assets/img/EllipseBlue.svg";
 import ellipsePink from "./assets/img/EllipsePink.svg";
-import addsvg from "./assets/img/add.svg";
+
 
 
 function App() {
@@ -39,15 +40,7 @@ function App() {
                     ]}
                     isRemovoble
                 />
-                <List
-                    items={[
-                        {
-                            className:'list_add_button',
-                            icon: <img className="img" src={addsvg} alt="list icon"/>,
-                            name: 'Добавить  список',
-                        }
-                    ]}
-                />
+                <AddList />
             </div>
         </div>
     );

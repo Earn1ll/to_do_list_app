@@ -8,11 +8,9 @@
       opacity: 1;
       border: 1px solid #282c34;
       border-radius: 4px;
-      background: #d7d5d5;
+      background: darken(#d7d5d5,10%);
     }
   }
-
-
 
   li {
     display: flex;
@@ -36,13 +34,6 @@
     }
 
 
-    /* .badge {
-       &--green {
-         background-color: #42B883;
-         width: 10px;
-         height: 10px;
-         border-radius: 30px;
-       }
-     }*/
+
   }
 }
