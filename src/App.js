@@ -1,6 +1,7 @@
 import List from "./components/List/index";
 import React from "react";
 import AddList from "./components/AddListButton/AddList";
+import DB from "./assets/db.json";
 
 import listsvg from "./assets/img/Vector.svg";
 import ellipseGreen from "./assets/img/EllipseGreen.svg";
@@ -40,7 +41,7 @@ function App() {
                     ]}
                     isRemovoble
                 />
-                <AddList />
+                <AddList colors={DB.colors}/>
             </div>
         </div>
     );
