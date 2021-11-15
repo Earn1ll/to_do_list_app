@@ -4,9 +4,7 @@ import AddList from "./components/AddListButton/AddList";
 import DB from "./assets/db.json";
 
 import listsvg from "./assets/img/Vector.svg";
-import ellipseGreen from "./assets/img/EllipseGreen.svg";
-import ellipseBlue from  "./assets/img/EllipseBlue.svg";
-import ellipsePink from "./assets/img/EllipsePink.svg";
+
 
 
 
@@ -17,7 +15,9 @@ function App() {
         <List
             items={[
                 {
-                    icon: <img  className="img" src={listsvg} alt="list icon"/>,
+                    icon:
+                    <img className="img"  src = {listsvg} alt = "listSvg" / >
+                    ,
                     name: 'Все задачи',
                     active:true,
                 }
@@ -27,15 +27,15 @@ function App() {
                 <List
                     items={[
                         {
-                            icon: <img className="img" src={ellipseGreen} alt="list icon"/>,
+                            color:'green',
                             name: 'Покупки',
                         },
                         {
-                            icon: <img className="img" src={ellipseBlue} alt="list icon"/>,
+                            color: 'blue',
                             name: 'Фронтенд',
                         },
                         {
-                            icon: <img className="img" src={ellipsePink} alt="list icon"/>,
+                            color: 'pink',
                             name: 'Фильмы и сериалы',
                         },
                     ]}
@@ -48,3 +48,6 @@ function App() {
 }
 
 export default App;
+/*
+
+ */
