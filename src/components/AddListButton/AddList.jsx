@@ -6,17 +6,27 @@ import Badge from "../Badge/Badge";
 
 import closeSvg from "../../assets/img/close.svg";
 
-const AddList = ({colors,onAdd}) => {
+
+
+
+const AddList = ({colors, onAdd}) => {
     const [visiblePopup, setVisiblePopup] = useState(false);
     const [selectedColor, selectColor] = useState(colors[0].id);
     const [inputValue, setInputValue] = useState('');
+    const onClose = () => {
+        setVisiblePopup(false);
+        setInputValue('');
+        selectColor(colors[0].id);
+    }
 
     const AddList = () => {
-if (!inputValue){
-    alert('Введите название задачи!');
-    return;
-}
-onAdd({id:Math.random(),name: inputValue,colorId: selectedColor});
+        if (!inputValue) {
+            alert('Введите название задачи!');
+            return;
+        }
+        const color = colors.filter(c => c.id === selectedColor)[0].name;
+        onAdd({id: Math.random(), name: inputValue, color: color});
+        onClose();
     }
 
     return (
@@ -33,7 +43,7 @@ onAdd({id:Math.random(),name: inputValue,colorId: selectedColor});
             />
             {visiblePopup && <div className="add_list_popup">
                 <img
-                    onClick={() => setVisiblePopup(false)}
+                    onClick={onClose}
                     src={closeSvg}
                     alt='close button'
                     className="add_list_popup_closeBtn"></img>

@@ -17,7 +17,10 @@ function App() {
     }));
 
     const onAddList =(obj) => {
-        console.log('добавлен список', obj);
+        const newList = [
+            ...lists,
+            obj];
+        setLists(newList);
     };
 
 
@@ -38,12 +41,20 @@ function App() {
 
                 <List
                     items={lists}
-                    isRemovoble
+                    isRemovable
+                    onRemove={()=> {
+                    alert('Не щелкай!')}
+                    }
                 />
                 <AddList onAdd={onAddList}
                          colors={DB.colors}
                 />
             </div>
+                <div className="todo__tasks">
+                    <div className="tasks">
+                        <h2 className=""tasks__title>Фронтенд</h2>
+                    </div>
+                </div>
         </div>
     );
 }
