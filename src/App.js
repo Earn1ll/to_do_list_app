@@ -2,6 +2,7 @@ import List from "./components/List/index";
 import React,{useState} from "react";
 import AddList from "./components/AddListButton/AddList";
 import DB from "./assets/db.json";
+import Tasks from "./components/tasks/tasks";
 
 import listsvg from "./assets/img/Vector.svg";
 
@@ -50,16 +51,12 @@ function App() {
                          colors={DB.colors}
                 />
             </div>
-                <div className="todo__tasks">
-                    <div className="tasks">
-                        <h2 className=""tasks__title>Фронтенд</h2>
-                    </div>
+                <div className= "todo__tasks">
+                    <Tasks/>
                 </div>
         </div>
     );
 }
 
-export default App;
-/*
 
- */
+export default App;
