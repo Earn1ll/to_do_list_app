@@ -12,18 +12,19 @@ import listsvg from "./assets/img/Vector.svg";
 function App() {
 
 
-    const [lists, setLists] = useState(
-        DB.lists.map(item => {
-        item.color = DB.colors.filter(
-            color => color.id === item.colorId)[0].name;
-        return item;
-    }));
+    const [lists, setLists] = useState(null);
+    const [colors, setColors] = useState(null);
 
     useEffect(() => {
-        axios.get('http://localhost:3004/lists?_expand=color').then(({data}) => {
-
+        axios
+            .get('http://localhost:3001/lists?_expand=color&_embed=tasks')
+            .then(({ data }) => {
+                setLists(data);
+            });
+        axios.get('http://localhost:3001/colors').then(({ data }) => {
+            setColors(data);
         });
-},[]);
+    }, []);
 
     const onAddList =(obj) => {
         const newList = [
@@ -48,20 +49,21 @@ function App() {
             ]}
         />
 
+            {lists ? (
                 <List
-                    items={lists}
-                    isRemovable
-                    onRemove={()=> {
-                    alert('Не щелкай!')}
-                    }
+                items={lists}
+                onRemove={id => {
+                    const newLists = lists.filter(item => item.id !== id);
+                    setLists(newLists);
+                }}
+                isRemovable
                 />
-                <AddList onAdd={onAddList}
-                         colors={DB.colors}
-                />
-            </div>
-                <div className= "todo__tasks">
-                    <Tasks/>
+                ) : (
+                'Загрузка...'
+                )}
+                <AddList onAdd={onAddList} colors={colors} />
                 </div>
+                <div className="todo__tasks">{lists && <Tasks list={lists[1]} />}</div>
         </div>
     );
 }

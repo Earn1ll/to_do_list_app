@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import List from "../List";
 import addsvg from "../../assets/img/add.svg";
 import "./AddList.scss";
 import Badge from "../Badge/Badge";
-
+import axios from 'axios';
 import closeSvg from "../../assets/img/close.svg";
 
 
@@ -11,12 +11,16 @@ import closeSvg from "../../assets/img/close.svg";
 
 const AddList = ({colors, onAdd}) => {
     const [visiblePopup, setVisiblePopup] = useState(false);
-    const [selectedColor, selectColor] = useState(colors[0].id);
+    const [seletedColor, selectColor] = useState(3);
+    const [isLoading, setIsLoading] = useState(false);
     const [inputValue, setInputValue] = useState('');
 
     useEffect(() => {
-        selectColor(colors[0].id)
-    });
+        if (Array.isArray(colors)) {
+            selectColor(colors[0].id);
+        }
+    }, [colors]);
+
 
     const onClose = () => {
         setVisiblePopup(false);
@@ -29,9 +33,21 @@ const AddList = ({colors, onAdd}) => {
             alert('Введите название задачи!');
             return;
         }
-        const color = colors.filter(c => c.id === selectedColor)[0].name;
-        onAdd({id: Math.random(), name: inputValue, color: color});
-        onClose();
+        setIsLoading(true);
+        axios
+            .post('http://localhost:3001/lists', {
+                name: inputValue,
+                colorId: seletedColor
+            })
+            .then(({ data }) => {
+                const color = colors.filter(c => c.id === seletedColor)[0].name;
+                const listObj = { ...data, color: { name: color } };
+                onAdd(listObj);
+                onClose();
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
     }
 
     return (
@@ -65,12 +81,12 @@ const AddList = ({colors, onAdd}) => {
                             <Badge onClick={() => selectColor(color.id)}
                                    key={color.id}
                                    color={color.name}
-                                   className={selectedColor === color.id && "active"}
+                                   className={seletedColor === color.id && 'active'}
                             />
                         ))
                     }
                 </div>
-                <button onClick={AddList} className="button">Добавить</button>
+                <button onClick={AddList} className="button">{isLoading ? 'Добавление...' : 'Добавить'}</button>
             </div>}
         </div>
     )

@@ -11,11 +11,6 @@
       "colorId": 4
     },
     {
-      "id": 3,
-      "name": "Фильмы и сериалы",
-      "colorId": 3
-    },
-    {
       "id": 4,
       "name": "Книги",
       "colorId": 2
@@ -34,6 +29,11 @@
       "name": "Курс по ReactJS ToDo",
       "colorId": 7,
       "id": 7
+    },
+    {
+      "name": "закончить тудушку",
+      "colorId": 8,
+      "id": 8
     }
   ],
   "tasks": [
@@ -120,12 +120,6 @@
       "text": "Сделали удаление и редактирование задач и списков",
       "completed": true,
       "id": 17
-    },
-    {
-      "listId": 8,
-      "text": "tttt",
-      "completed": false,
-      "id": 18
     }
   ],
   "colors": [
