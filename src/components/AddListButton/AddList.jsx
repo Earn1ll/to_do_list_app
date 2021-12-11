@@ -13,6 +13,11 @@ const AddList = ({colors, onAdd}) => {
     const [visiblePopup, setVisiblePopup] = useState(false);
     const [selectedColor, selectColor] = useState(colors[0].id);
     const [inputValue, setInputValue] = useState('');
+
+    useEffect(() => {
+        selectColor(colors[0].id)
+    });
+
     const onClose = () => {
         setVisiblePopup(false);
         setInputValue('');

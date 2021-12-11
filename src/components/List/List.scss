@@ -26,7 +26,7 @@
     align-items: center;
     padding: 10px 12px;
     cursor: pointer;
-    transition: 0.1s ease-in-out;
+    transition: background-color 0.15s ease-in-out;
     &:hover {
       background: rgba(255, 255, 255, 0.5);
     }
@@ -35,6 +35,7 @@
     }
 
     #{$self}__remove-icon {
+      transition: opacity .15s ease-in-out;
       opacity: 0;
       transition: opacity 0.15s ease-in-out;
       &:hover {

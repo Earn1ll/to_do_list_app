@@ -1,8 +1,8 @@
-import List from "./components/List/index";
-import React,{useState} from "react";
-import AddList from "./components/AddListButton/AddList";
-import DB from "./assets/db.json";
-import Tasks from "./components/tasks/tasks";
+
+import React,{useState,useEffect} from "react";
+//import DB from "./assets/db.json";
+import axios from "axios";
+import {List,AddList,Tasks} from './components/components';
 
 import listsvg from "./assets/img/Vector.svg";
 
@@ -10,12 +10,20 @@ import listsvg from "./assets/img/Vector.svg";
 
 
 function App() {
+
+
     const [lists, setLists] = useState(
         DB.lists.map(item => {
         item.color = DB.colors.filter(
             color => color.id === item.colorId)[0].name;
         return item;
     }));
+
+    useEffect(() => {
+        axios.get('http://localhost:3004/lists?_expand=color').then(({data}) => {
+
+        });
+},[]);
 
     const onAddList =(obj) => {
         const newList = [
