@@ -5,7 +5,7 @@ import './tasks.scss';
 const Tasks = ({ list }) => {
     return (
         <div className="tasks">
-            <h2 className="tasks__title"tasks__title>
+            <h2 className="tasks__title">
                 {list.name}
                 <img src={editSvg} alt='edit icon'/>
             </h2>
