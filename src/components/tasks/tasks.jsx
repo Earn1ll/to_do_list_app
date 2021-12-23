@@ -1,9 +1,11 @@
 import React from 'react';
 import axios from "axios";
 import  editSvg from '../../assets/img/edit.svg';
-import './tasks.scss';
 
-const Tasks = ({ list, onEditTitle }) => {
+import './tasks.scss';
+import AddTaskForm from "./AddTasksForm";
+
+const Tasks = ({ list, onEditTitle, onAddTask }) => {
     const editTitle = () => {
         const newTitle = window.prompt('Название списка',list.name);
         if (newTitle) {
@@ -48,6 +50,7 @@ const Tasks = ({ list, onEditTitle }) => {
                         <input readOnly value={task.text} />
                 </div>
                 ))}
+                <AddTaskForm list={list} onAddTask={onAddTask}/>
             </div>
         </div>
     );
